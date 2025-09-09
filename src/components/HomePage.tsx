@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Power, MapPin, DollarSign, Clock, AlertCircle, User } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import { supabase, type Ride } from '../lib/supabase'
+import { formatCurrency } from '../lib/utils'
 import toast from 'react-hot-toast'
 
 export function HomePage() {
@@ -67,6 +68,7 @@ export function HomePage() {
         setRides([])
       }
     } catch (error) {
+      console.error('Failed to update status:', error)
       toast.error('Failed to update status')
     } finally {
       setToggling(false)
@@ -91,6 +93,7 @@ export function HomePage() {
       toast.success('Ride accepted!')
       navigate(`/ride/${rideId}`)
     } catch (error) {
+      console.error('Failed to accept ride:', error)
       toast.error('Failed to accept ride')
       loadAvailableRides() // Refresh list
     }
@@ -101,13 +104,6 @@ export function HomePage() {
     if (error) {
       toast.error('Error signing out')
     }
-  }
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(amount)
   }
 
   const formatTime = (dateString: string) => {
