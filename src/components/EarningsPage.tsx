@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, DollarSign, TrendingUp, Calendar } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
+import { formatCurrency } from '../lib/utils'
 
 interface EarningsData {
   totalEarnings: number
@@ -75,13 +76,6 @@ export function EarningsPage() {
     } finally {
       setLoading(false)
     }
-  }
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(amount)
   }
 
   const getPeriodLabel = (p: typeof period) => {
