@@ -1,0 +1,49 @@
+{
+  "name": "@tuktuk-eazy/ui",
+  "version": "0.1.0",
+  "description": "Tuk Tuk Eazy design system and UI components",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tailwind.preset": "./tailwind.preset.cjs"
+  },
+  "files": [
+    "dist",
+    "tailwind.preset.cjs"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs && cp src/styles/tokens.css dist/styles.css",
+    "dev": "tsup src/index.ts --dts --format esm,cjs --watch",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
+    "design-system",
+    "ui-components"
+  ],
+  "author": "Tuk Tuk Eazy",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "tailwindcss": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.0.2",
+    "typescript": "^5.5.3"
+  }
+}

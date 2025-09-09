@@ -1,0 +1,98 @@
+/**
+ * Tuk Tuk Eazy Design Tokens
+ * 
+ * These CSS custom properties define the core design system.
+ * Using RGB values allows consumers to apply opacity with Tailwind's alpha syntax.
+ */
+
+:root {
+  /* Brand Colors (RGB for /<alpha-value>) */
+  --tt-primary: 46 196 182;     /* #2EC4B6 - Teal */
+  --tt-accent: 242 201 76;      /* #F2C94C - Yellow */
+  --tt-secondary: 255 107 107;  /* #FF6B6B - Coral */
+
+  /* Base Colors */
+  --tt-ink: 14 23 42;           /* #0E172A - Dark blue-gray */
+  --tt-surface: 248 250 252;    /* #F8FAFC - Light gray */
+
+  /* Feedback Colors */
+  --tt-success: 16 185 129;     /* #10B981 - Emerald */
+  --tt-warning: 245 158 11;     /* #F59E0B - Amber */
+  --tt-danger: 239 68 68;       /* #EF4444 - Red */
+  --tt-muted: 100 116 139;      /* #64748B - Slate */
+
+  /* Status Colors (mapped to ride status enum) */
+  --tt-status-requested: 148 163 184;  /* slate-400 */
+  --tt-status-assigned: 46 196 182;    /* primary */
+  --tt-status-enroute: 59 130 246;     /* blue-500 */
+  --tt-status-started: 245 158 11;     /* amber-500 */
+  --tt-status-completed: 16 185 129;   /* emerald-500 */
+  --tt-status-cancelled: 239 68 68;    /* red-500 */
+
+  /* Border Radius */
+  --tt-radius-sm: 8px;
+  --tt-radius-md: 12px;
+  --tt-radius-lg: 16px;
+  --tt-radius-xl: 20px;
+
+  /* Shadows */
+  --tt-shadow-soft: 0 6px 24px rgba(14, 23, 42, 0.06);
+  --tt-shadow-elevate: 0 12px 32px rgba(14, 23, 42, 0.12);
+  --tt-shadow-strong: 0 20px 40px rgba(14, 23, 42, 0.18);
+
+  /* Layout */
+  --tt-container-max: 1120px;
+  --tt-container-padding: 1rem;
+
+  /* Focus Ring */
+  --tt-ring: 46 196 182;        /* primary color for focus states */
+
+  /* Typography Scale */
+  --tt-text-xs: 0.75rem;        /* 12px */
+  --tt-text-sm: 0.875rem;       /* 14px */
+  --tt-text-base: 1rem;         /* 16px */
+  --tt-text-lg: 1.125rem;       /* 18px */
+  --tt-text-xl: 1.25rem;        /* 20px */
+  --tt-text-2xl: 1.5rem;        /* 24px */
+  --tt-text-3xl: 1.875rem;      /* 30px */
+
+  /* Spacing Scale */
+  --tt-space-1: 0.25rem;        /* 4px */
+  --tt-space-2: 0.5rem;         /* 8px */
+  --tt-space-3: 0.75rem;        /* 12px */
+  --tt-space-4: 1rem;           /* 16px */
+  --tt-space-5: 1.25rem;        /* 20px */
+  --tt-space-6: 1.5rem;         /* 24px */
+  --tt-space-8: 2rem;           /* 32px */
+  --tt-space-10: 2.5rem;        /* 40px */
+  --tt-space-12: 3rem;          /* 48px */
+}
+
+/* Dark Theme Support */
+:root[data-theme="dark"] {
+  --tt-surface: 9 12 18;        /* Very dark blue-gray */
+  --tt-ink: 241 245 249;        /* Light gray */
+  --tt-muted: 148 163 184;      /* Lighter slate */
+  
+  /* Adjust shadows for dark mode */
+  --tt-shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.2);
+  --tt-shadow-elevate: 0 12px 32px rgba(0, 0, 0, 0.3);
+  --tt-shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --tt-shadow-soft: 0 2px 8px rgba(14, 23, 42, 0.2);
+    --tt-shadow-elevate: 0 4px 16px rgba(14, 23, 42, 0.3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
